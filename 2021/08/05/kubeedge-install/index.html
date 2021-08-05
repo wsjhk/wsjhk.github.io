@@ -6,14 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Archives | Hexo</title>
+  <title>kubeedge_install | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/archives/index.html">
+  <meta name="description" content="【1】安装部署测试部署KubeEdge-v1.3.0版本，v1.3.1和v1.4.0版本的部署步骤是一样的。 一、目录： 1234560.Kubernetes-1.17.3版本1.KubeEdge-v1.3.0版本keadm部署    1）部署cloudcore    2）部署edgecore    3）测试    4）升级版本到v1.4.0    二、安装包下载： 123456[root@cka">
+<meta property="og:type" content="article">
+<meta property="og:title" content="kubeedge_install">
+<meta property="og:url" content="http://example.com/2021/08/05/kubeedge-install/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="【1】安装部署测试部署KubeEdge-v1.3.0版本，v1.3.1和v1.4.0版本的部署步骤是一样的。 一、目录： 1234560.Kubernetes-1.17.3版本1.KubeEdge-v1.3.0版本keadm部署    1）部署cloudcore    2）部署edgecore    3）测试    4）升级版本到v1.4.0    二、安装包下载： 123456[root@cka">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-08-05T08:50:54.000Z">
+<meta property="article:modified_time" content="2021-08-05T08:51:35.139Z">
 <meta property="article:author" content="John Doe">
+<meta property="article:tag" content="K8S">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
@@ -150,36 +155,90 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-kubeedge-install" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2021" class="archive-year">2021</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/08/05/kubeedge-install/" class="archive-article-date">
-  	<time datetime="2021-08-05T08:50:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-08-05</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/08/05/kubeedge-install/">kubeedge_install</a>
+    <h1 class="article-title" itemprop="name">
+      kubeedge_install
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2021/08/05/kubeedge-install/" class="archive-article-date">
+  	<time datetime="2021-08-05T08:50:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-08-05</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>【1】安装部署<br>测试部署KubeEdge-v1.3.0版本，v1.3.1和v1.4.0版本的部署步骤是一样的。</p>
+<p>一、目录：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">0.Kubernetes-1.17.3版本</span><br><span class="line">1.KubeEdge-v1.3.0版本keadm部署</span><br><span class="line">    1）部署cloudcore</span><br><span class="line">    2）部署edgecore</span><br><span class="line">    3）测试</span><br><span class="line">    4）升级版本到v1.4.0</span><br></pre></td></tr></table></figure>
+
+
+
+<p>二、安装包下载：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@cka-node-01 ~]# mkdir kubeedge</span><br><span class="line">[root@cka-node-01 ~]# cd kubeedge</span><br><span class="line">[root@cka-node-01 kubeedge]# wget https://github.com/kubeedge/kubeedge/releases/download/v1.3.0/keadm-v1.3.0-linux-amd64.tar.gz</span><br><span class="line">[root@cka-node-01 kubeedge]# wget https://github.com/kubeedge/kubeedge/releases/download/v1.3.0/kubeedge-v1.3.0-linux-amd64.tar.gz</span><br><span class="line">[root@cka-node-01 kubeedge]# wget https://github.com/kubeedge/kubeedge/releases/download/v1.4.0/keadm-v1.4.0-linux-amd64.tar.gz</span><br><span class="line">[root@cka-node-01 kubeedge]# wget https://github.com/kubeedge/kubeedge/releases/download/v1.4.0/kubeedge-v1.4.0-linux-amd64.tar.gz</span><br></pre></td></tr></table></figure>
+
+
+
+
+<p>三、部署：<br>1）在master节点上执行以下命令部署cloudcore：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">[root@cka-node-01 kubeedge]# tar -zxvf keadm-v1.3.0-linux-amd64.tar.gz</span><br><span class="line">[root@cka-node-01 keadm]# pwd</span><br><span class="line">/root/kubeedge/keadm-v1.3.0-linux-amd64/keadm</span><br><span class="line">// 会去下载最新版本的安装包，由于下载很慢我们终止掉，先把安装包放到/etc/kubeedge目录下，该目录在执行init后自动生成</span><br><span class="line">[root@cka-node-01 keadm]# /root/kubeedge/keadm-v1.3.0-linux-amd64/keadm init --kubeedge-version=1.3.0 --kube-config=/root/.kube/config</span><br><span class="line">[root@cka-node-01 keadm]# rm -f /etc/kubeedge/kubeedge-v*</span><br><span class="line">[root@cka-node-01 keadm]# mv /root/kubeedge/kubeedge-v1.3.0-linux-amd64.tar.gz /etc/kubeedge/</span><br><span class="line">// 再次执行安装</span><br><span class="line">[root@cka-node-01 keadm]# /root/kubeedge/keadm-v1.3.0-linux-amd64/keadm init --kubeedge-version=1.3.0 --kube-config=/root/.kube/config</span><br><span class="line">Kubernetes version verification passed, KubeEdge installation will start...</span><br><span class="line">Expected or Default KubeEdge version 1.3.0 is already downloaded</span><br><span class="line">kubeedge-v1.3.0-linux-amd64/</span><br><span class="line">kubeedge-v1.3.0-linux-amd64/edge/</span><br><span class="line">kubeedge-v1.3.0-linux-amd64/edge/edgecore</span><br><span class="line">kubeedge-v1.3.0-linux-amd64/cloud/</span><br><span class="line">kubeedge-v1.3.0-linux-amd64/cloud/csidriver/</span><br><span class="line">kubeedge-v1.3.0-linux-amd64/cloud/csidriver/csidriver</span><br><span class="line">kubeedge-v1.3.0-linux-amd64/cloud/admission/</span><br><span class="line">kubeedge-v1.3.0-linux-amd64/cloud/admission/admission</span><br><span class="line">kubeedge-v1.3.0-linux-amd64/cloud/cloudcore/</span><br><span class="line">kubeedge-v1.3.0-linux-amd64/cloud/cloudcore/cloudcore</span><br><span class="line">kubeedge-v1.3.0-linux-amd64/version</span><br><span class="line"></span><br><span class="line">KubeEdge cloudcore is running, For logs visit:  /var/log/kubeedge/cloudcore.log</span><br><span class="line">CloudCore started</span><br><span class="line"></span><br><span class="line">// 查看集群状态，此时会自动创建好kubeedge名称空间并初始化好secrets</span><br><span class="line">[root@cka-node-01 keadm]# kubectl get node</span><br><span class="line">NAME          STATUS   ROLES    AGE   VERSION</span><br><span class="line">cka-node-01   Ready    master   80d   v1.17.3</span><br><span class="line">cka-node-02   Ready    &lt;none&gt;   80d   v1.17.3</span><br><span class="line">cka-node-03   Ready    &lt;none&gt;   80d   v1.17.3</span><br><span class="line"></span><br><span class="line">[root@cka-node-01 kubeedge]# kubectl -n kubeedge get secrets</span><br><span class="line">NAME                  TYPE                                  DATA   AGE</span><br><span class="line">casecret              Opaque                                2      2m20s</span><br><span class="line">cloudcoresecret       Opaque                                2      2m20s</span><br><span class="line">default-token-lwskn   kubernetes.io/service-account-token   3      5m32s</span><br><span class="line">tokensecret           Opaque</span><br><span class="line"></span><br><span class="line">// 查看cloudcore进程</span><br><span class="line">[root@cka-node-01 keadm]# ps -ef | grep cloudcore</span><br><span class="line">root     2160381       1  0 15:06 pts/0    00:00:02 cloudcore</span><br><span class="line">[root@cka-node-01 keadm]# netstat -antlp | grep 10000</span><br><span class="line">tcp6       0      0 :::10000                :::*                    LISTEN      2160381/cloudcore</span><br><span class="line">tcp6       0      0 10.0.100.20:10000       10.0.100.5:40620        ESTABLISHED 2160381/cloudcore // 边缘节点接入成功后才建立的连接</span><br><span class="line"></span><br><span class="line">// 手动启动cloudcore</span><br><span class="line">[root@a1b1-ndc2-10 keadm]# cloudcore &gt; /var/log/kubeedge/cloudcore.log 2&gt;&amp;1 &amp;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>2）在边缘侧部署edgecore:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line">// 在master节点上生产token</span><br><span class="line">[root@cka-node-01 keadm]# ./keadm gettoken</span><br><span class="line">7cc4c51ce93995216d21487cc932266f81bfb0e063eaad5f19ffa6d96787adc9.eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MDIzMTM1ODV9.44u78cEh2GZ_0K_3FPqZQvfN6mQ9vHY8ad6BiVIRAGk</span><br><span class="line"></span><br><span class="line">// 在边缘节点上执行部署</span><br><span class="line">[root@a1b1-ndc2-10 kubeedge]# tar -zxvf keadm-v1.3.0-linux-amd64.tar.gz</span><br><span class="line">[root@a1b1-ndc2-10 keadm]# pwd</span><br><span class="line">/root/kubeedge/keadm-v1.3.0-linux-amd64/keadm</span><br><span class="line">// 会去下载最新版本的安装包，由于下载很慢我们终止掉，先把安装包放到/etc/kubeedge目录下，该目录在执行init后自动生成</span><br><span class="line">[root@a1b1-ndc2-10 keadm]# /root/kubeedge/keadm-v1.3.0-linux-amd64/keadm join --cloudcore-ipport=10.0.100.20:10000 --edgenode-name=a1b1-ndc2-10.0.100.5 --kubeedge-version=1.3.0 --token=7cc4c51ce93995216d21487cc932266f81bfb0e063eaad5f19ffa6d96787adc9.eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MDIzMTM1ODV9.44u78cEh2GZ_0K_3FPqZQvfN6mQ9vHY8ad6BiVIRAGk</span><br><span class="line">[root@a1b1-ndc2-10 keadm]# rm -f /etc/kubeedge/kubeedge-v*</span><br><span class="line">[root@a1b1-ndc2-10 keadm]# mv /root/kubeedge/kubeedge-v1.3.0-linux-amd64.tar.gz /etc/kubeedge/</span><br><span class="line">// 再次执行安装</span><br><span class="line">[root@a1b1-ndc2-10 keadm]# /root/kubeedge/keadm-v1.3.0-linux-amd64/keadm join --cloudcore-ipport=10.0.100.20:10000 --edgenode-name=a1b1-ndc2-10.0.100.5 --kubeedge-version=1.3.0 --token=7cc4c51ce93995216d21487cc932266f81bfb0e063eaad5f19ffa6d96787adc9.eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MDIzMTM1ODV9.44u78cEh2GZ_0K_3FPqZQvfN6mQ9vHY8ad6BiVIRAGk</span><br><span class="line"></span><br><span class="line"> // 执行成功，但是edgecore启动失败，因为没有安装docker-ce</span><br><span class="line"> [root@a1b1-ndc2-10 keadm]# yum install -y docker-ce</span><br><span class="line"> // 安装完成后重新执行join</span><br><span class="line">[root@a1b1-ndc2-10 keadm]# /root/kubeedge/keadm-v1.3.0-linux-amd64/keadm join --cloudcore-ipport=10.0.100.20:10000 --edgenode-name=a1b1-ndc2-10.0.100.5 --kubeedge-version=1.3.0 --token=7cc4c51ce93995216d21487cc932266f81bfb0e063eaad5f19ffa6d96787adc9.eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MDIzMTM1ODV9.44u78cEh2GZ_0K_3FPqZQvfN6mQ9vHY8ad6BiVIRAGk</span><br><span class="line">Host has mosquit+ already installed and running. Hence skipping the installation steps !!!</span><br><span class="line">Expected or Default KubeEdge version 1.3.0 is already downloaded</span><br><span class="line">kubeedge-v1.3.0-linux-amd64/</span><br><span class="line">kubeedge-v1.3.0-linux-amd64/edge/</span><br><span class="line">kubeedge-v1.3.0-linux-amd64/edge/edgecore</span><br><span class="line">  beedge-v1.3.0-linux-amd64/cloud/</span><br><span class="line">kubeedge-v1.3.0-linux-amd64/cloud/csidriver/</span><br><span class="line">kubeedge-v1.3.0-linux-amd64/cloud/csidriver/csidriver</span><br><span class="line">kubeedge-v1.3.0-linux-amd64/cloud/admission/</span><br><span class="line">kubeedge-v1.3.0-linux-amd64/cloud/admission/admission</span><br><span class="line">kubeedge-v1.3.0-linux-amd64/cloud/cloudcore/</span><br><span class="line">kubeedge-v1.3.0-linux-amd64/cloud/cloudcore/cloudcore</span><br><span class="line">kubeedge-v1.3.0-linux-amd64/version</span><br><span class="line"></span><br><span class="line">KubeEdge edgecore is running, For logs visit:  /var/log/kubeedge/edgecore.log</span><br><span class="line">// 查看/var/log/kubeedge/edgecore.log日志，有如下报错：</span><br><span class="line">[root@a1b1-ndc2-10 keadm]# tail -10 /var/log/kubeedge/edgecore.log</span><br><span class="line">E1009 15:23:19.387010   42919 edged.go:254] init new edged error, misconfiguration: kubelet cgroup driver: &quot;cgroupfs&quot; is different from docker cgroup driver: &quot;systemd&quot;</span><br><span class="line">[root@a1b1-ndc2-10 keadm]# grep cgroup /etc/kubeedge/config/edgecore.yaml</span><br><span class="line">    cgroupDriver: cgroupfs</span><br><span class="line">    cgroupRoot: &quot;&quot;</span><br><span class="line">    cgroupsPerQOS: true</span><br><span class="line">[root@a1b1-ndc2-10 keadm]# grep cgroup /etc/docker/daemon.json</span><br><span class="line">	&quot;exec-opts&quot;: [&quot;native.cgroupdriver=systemd&quot;], </span><br><span class="line"> </span><br><span class="line"> // 因为docker和edgecore的cgroup启动不一样导致报错，修改docker的native.cgroupdriver=cgroupfs并重启docker后重新join后成功</span><br><span class="line">[root@a1b1-ndc2-10 keadm]# tail -100 /var/log/kubeedge/edgecore.log</span><br><span class="line">I1009 15:25:31.350084   43128 volume_manager.go:265] Starting Kubelet Volume Manager</span><br><span class="line">I1009 15:25:31.350096   43128 edged.go:329] starting plugin manager</span><br><span class="line">I1009 15:25:31.350104   43128 edged.go:332] starting syncPod</span><br><span class="line">I1009 15:25:31.350142   43128 desired_state_of_world_populator.go:138] Desired state populator starts to run</span><br><span class="line">W1009 15:25:31.350153   43128 container_manager_linux.go:843] CPUAccounting not enabled for pid: 43128</span><br><span class="line">W1009 15:25:31.350158   43128 container_manager_linux.go:846] MemoryAccounting not enabled for pid: 43128</span><br><span class="line">I1009 15:25:31.350183   43128 server.go:35] starting to listen read-only on 127.0.0.1:10350</span><br><span class="line">I1009 15:25:31.350230   43128 plugin_manager.go:114] Starting Kubelet Plugin Manager</span><br><span class="line">I1009 15:25:31.351155   43128 server.go:354] Adding debug handlers to kubelet server.</span><br><span class="line">I1009 15:25:31.362057   43128 edged_status.go:392] Attempting to register node a1b1-ndc2-10.0.100.5</span><br><span class="line">I1009 15:25:31.368600   43128 process.go:170] received msg from cloud-hub:&#123;Header:&#123;ID:f822ea73-a635-4225-9b89-d2b16c3c671a ParentID:1a80e49e-357c-4ad0-b81c-c02fb9873647 Timestamp:1602228331360 ResourceVersion: Sync:false&#125; Router:&#123;Source:edgecontroller Group:resource Operation:response Resource:default/node/a1b1-ndc2-10.0.100.5&#125; Content:OK&#125;</span><br><span class="line">I1009 15:25:31.368712   43128 edged_status.go:402] Successfully registered node a1b1-ndc2-10.0.100.5</span><br><span class="line">...</span><br><span class="line"></span><br><span class="line">// 或者修改edgecore的cgroup驱动为systemd，然后手动启动edgecore</span><br><span class="line">[root@a1b1-ndc2-10 keadm]# edgecore &gt; /var/log/kubeedge/edgecore.log 2&gt;&amp;1 &amp;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>3）测试</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line">[root@cka-node-01 keadm]# kubectl get node</span><br><span class="line">NAME                   STATUS   ROLES        AGE   VERSION</span><br><span class="line">a1b1-ndc2-10.0.100.5   Ready    agent,edge   25m   v1.17.1-kubeedge-v1.3.0</span><br><span class="line">cka-node-01            Ready    master       80d   v1.17.3</span><br><span class="line">cka-node-02            Ready    &lt;none&gt;       80d   v1.17.3</span><br><span class="line">cka-node-03            Ready    &lt;none&gt;       80d   v1.17.3</span><br><span class="line"></span><br><span class="line">[root@cka-node-01 keadm]# kubectl get node -o wide</span><br><span class="line">NAME                   STATUS   ROLES        AGE   VERSION                   INTERNAL-IP   EXTERNAL-IP   OS-IMAGE                KERNEL-VERSION            CONTAINER-RUNTIME</span><br><span class="line">a1b1-ndc2-10.0.100.5   Ready    agent,edge   25m   v1.17.1-kubeedge-v1.3.0   10.0.100.5    &lt;none&gt;        CentOS Linux 7 (Core)   3.10.0-957.el7.x86_64     remote://19.3.13</span><br><span class="line">cka-node-01            Ready    master       80d   v1.17.3                   10.0.100.20   &lt;none&gt;        CentOS Linux 7 (Core)   4.14.119-200.el7.x86_64   docker://19.3.12</span><br><span class="line">cka-node-02            Ready    &lt;none&gt;       80d   v1.17.3                   10.0.100.21   &lt;none&gt;        CentOS Linux 7 (Core)   4.14.119-200.el7.x86_64   docker://19.3.12</span><br><span class="line">cka-node-03            Ready    &lt;none&gt;       80d   v1.17.3                   10.0.100.22   &lt;none&gt;        CentOS Linux 7 (Core)   4.14.119-200.el7.x86_64   docker://19.3.12</span><br><span class="line"></span><br><span class="line">// 部署pod</span><br><span class="line">[root@cka-node-01 kubeedge]# cat pod.yaml</span><br><span class="line">apiVersion: v1</span><br><span class="line">kind: Pod</span><br><span class="line">metadata:</span><br><span class="line">  name: edge-pod</span><br><span class="line">spec:</span><br><span class="line">  nodeName: a1b1-ndc2-10.0.100.5</span><br><span class="line">  containers:</span><br><span class="line">    - name: edge-pod</span><br><span class="line">      image: nginx</span><br><span class="line">[root@cka-node-01 kubeedge]# kubectl apply -f pod.yaml</span><br><span class="line">[root@cka-node-01 kubeedge]# kubectl get pods edge-pod -o wide</span><br><span class="line">NAME       READY   STATUS    RESTARTS   AGE   IP              NODE                   NOMINATED NODE   READINESS GATES</span><br><span class="line">edge-pod   1/1     Running   0          59s   169.254.123.2   a1b1-ndc2-10.0.100.5   &lt;none&gt;           &lt;none&gt;</span><br><span class="line"></span><br><span class="line">// 执行reset后，只是停止了edgecore或者是cloudcore组件。重启组件后可恢复集群状态</span><br><span class="line">[root@a1b1-ndc2-10 keadm]# ./keadm reset</span><br><span class="line">[root@a1b1-ndc2-10 keadm]# edgecore &gt; /var/log/kubeedge/edgecore.log 2&gt;&amp;1 &amp;</span><br><span class="line">[root@cka-node-01 keadm]# kubectl get node a1b1-ndc2-10.0.100.5 -w</span><br><span class="line">NAME                   STATUS   ROLES        AGE   VERSION</span><br><span class="line">a1b1-ndc2-10.0.100.5   Ready    agent,edge   35m   v1.17.1-kubeedge-v1.3.0</span><br><span class="line">[root@cka-node-01 keadm]# kubectl get pods edge-pod</span><br><span class="line">NAME       READY   STATUS    RESTARTS   AGE</span><br><span class="line">edge-pod   1/1     Running   0          27m</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">4）升级版本到v1.4.0</span><br><span class="line">// 在每个edge node节点中备份数据库</span><br><span class="line">$ mkdir -p /tmp/kubeedge_backup</span><br><span class="line">$ cp /var/lib/kubeedge/edgecore.db /tmp/kubeedge_backup/</span><br><span class="line"></span><br><span class="line">// （可选）Device related(Optional)</span><br><span class="line">If you upgrade from 1.3 to 1.4, please note that we upgrade device API from v1alpha1 to v1alpha2.</span><br><span class="line">You need to install Device v1alpha2(https://github.com/kubeedge/kubeedge/blob/release-1.4/build/crds/devices/devices_v1alpha2_device.yaml) and DeviceModel v1alpha2(https://github.com/kubeedge/kubeedge/blob/release-1.4/build/crds/devices/devices_v1alpha2_devicemodel.yaml), and manually convert their existing custom resources from v1alpha1 to v1alpha2.</span><br><span class="line">It’s recommended to keep v1alpha1 CRD and custom resources in the cluster or exported somewhere, in case any rollback is needed.</span><br><span class="line"></span><br><span class="line">// 停止edgecore和cloudcore进程</span><br><span class="line">Stop edgecore processes one by one, after ensuring all edgecore processes are stopped, stop cloudcore.</span><br><span class="line">The way to stop depends on how you deploy:</span><br><span class="line">for binary or “keadm”: use kill</span><br><span class="line">for “systemd”: use systemctl</span><br><span class="line"></span><br><span class="line">// 清理环境</span><br><span class="line">$ rm -rf /var/lib/kubeedge /etc/kubeedge</span><br><span class="line"></span><br><span class="line">// 恢复数据</span><br><span class="line">Restore database at each edge node:</span><br><span class="line">$ mkdir -p /var/lib/kubeedge</span><br><span class="line">$ mv /tmp/kubeedge_backup/edgecore.db /var/lib/kubeedge/</span><br><span class="line"></span><br><span class="line">// 然后重新使用keadm安装v1.4.0版本</span><br></pre></td></tr></table></figure>
+
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/alipay.png">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/wechat.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -191,46 +250,106 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2021/08/05/kubeedge-install/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/08/05/hello-world/" class="archive-article-date">
-  	<time datetime="2021-08-05T07:16:57.347Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-08-05</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2021/08/05/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Hello World</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/08/05/hello-world/">Hello World</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
+  
+
+  
 
 
           </div>
@@ -253,8 +372,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
